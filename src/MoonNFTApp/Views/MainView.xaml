@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MoonNFTApp.Views.MainView"
+    xmlns:templates="clr-namespace:MoonNFTApp.Views.Templates"
+    Shell.NavBarIsVisible="False"
+    Title="Moon NFT">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="AccentColor">#0DA16D</Color>
+            
+            <Style x:Key="HeaderShape01Style" TargetType="Rectangle">
+                <Setter Property="HeightRequest" Value="200" />
+                <Setter Property="Fill" Value="White" />
+                <Setter Property="VerticalOptions" Value="Start" />
+            </Style>
+            
+            <Style x:Key="HeaderShape02Style" TargetType="Ellipse">
+                <Setter Property="HeightRequest" Value="220" />
+                <Setter Property="Fill" Value="White" />
+                <Setter Property="TranslationY" Value="-120" />
+                <Setter Property="VerticalOptions" Value="Start" />
+            </Style>
+
+            <Style x:Key="HeaderLogoStyle" TargetType="Ellipse">
+                <Setter Property="Fill" Value="{StaticResource AccentColor}" />
+                <Setter Property="HeightRequest" Value="20" />
+                <Setter Property="WidthRequest" Value="20" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 8, 6, 0" />
+            </Style>
+            
+            <Style x:Key="HeaderTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontFamily" Value="TekoBold" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />   
+                <Setter Property="Margin" Value="0, 24, 0, 12" />
+            </Style>
+            
+            <Style x:Key="TitleText01Style" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontFamily" Value="TekoBold" />
+                <Setter Property="FontSize" Value="40" />
+                <Setter Property="MaxLines" Value="2" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="WidthRequest" Value="300" />
+            </Style>
+            
+            <Style x:Key="TitleText02Style" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+                <Setter Property="FontFamily" Value="TekoBold" />
+                <Setter Property="FontSize" Value="40" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TranslationY" Value="-16" />
+            </Style>
+            
+            <Style x:Key="DescriptionTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="WidthRequest" Value="160" />
+                <Setter Property="Margin" Value="0, 12, 0, 0" />
+            </Style>
+            
+            <Style x:Key="CollectionContainerStyle" TargetType="Layout">
+                <Setter Property="Rotation" Value="8" />
+                <Setter Property="Scale" Value="1.3" />
+                <Setter Property="TranslationX" Value="12" />
+            </Style>
+
+            <Style x:Key="StartedButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontFamily" Value="TekoBold" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="CornerRadius" Value="24" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="Margin" Value="24" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid
+            ColumnSpacing="2"
+            ColumnDefinitions="*, *, *"
+            RowDefinitions="200, *"
+            Style="{StaticResource CollectionContainerStyle}">
+            <!-- TODO: REPLACE BY COLLECTIONVIEW AND USE REMAININGITEMSTHRESHOLDREACHEDCOMMAND -->
+            <ScrollView
+                x:Name="ArtCollectionView01"
+                Grid.Column="0"
+                Grid.Row="1"
+                IsEnabled="False">
+                <StackLayout
+                    BindableLayout.ItemsSource="{Binding ArtCollection01}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <templates:ArtItemTemplate />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+            <ScrollView
+                x:Name="ArtCollectionView02"
+                Grid.Column="1"
+                Grid.Row="1"
+                IsEnabled="False">
+                <StackLayout 
+                    BindableLayout.ItemsSource="{Binding ArtCollection02}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <templates:ArtItemTemplate />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+            <ScrollView   
+                x:Name="ArtCollectionView03"
+                Grid.Column="2" 
+                Grid.Row="1"
+                IsEnabled="False">
+                <StackLayout 
+                    BindableLayout.ItemsSource="{Binding ArtCollection03}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <templates:ArtItemTemplate />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+        <Grid>
+            <Grid
+                RowDefinitions="Auto, *">
+                <Rectangle 
+                    VerticalOptions="Start"
+                    HeightRequest="200"
+                    Fill="White"
+                    Style="{StaticResource HeaderShape01Style}"/>
+                <Ellipse 
+                    Grid.Row="1"
+                    x:Name="HeaderShape02"
+                    Style="{StaticResource HeaderShape02Style}"/>
+            </Grid>
+            <Grid
+                RowDefinitions="Auto, Auto, Auto, Auto">
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <Ellipse
+                        Style="{StaticResource HeaderLogoStyle}"/>
+                    <Label
+                        Text="MOON"
+                        Style="{StaticResource HeaderTextStyle}"/>
+                </StackLayout>
+                <Label
+                    Grid.Row="1"
+                    Text="WELCOME TO THE NEW WAVE OF"
+                    Style="{StaticResource TitleText01Style}"/>
+                <Label
+                    Grid.Row="2"
+                    Text="DIGITAL ART."
+                    Style="{StaticResource TitleText02Style}"/>
+                <Label
+                    Grid.Row="3"
+                    Text="The new marketplace with new and innovate NFT"
+                    Style="{StaticResource DescriptionTextStyle}"/>
+            </Grid>
+        </Grid>
+        <Button
+            Text="GET STARTED"
+            Style="{StaticResource StartedButtonStyle}"/>
+    </Grid>
+</ContentPage>

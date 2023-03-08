@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MoonNFTApp.Views.Templates.ArtItemTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="ArtItemContainerStyle" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 12" />
+                <Setter Property="StrokeThickness" Value="0" />
+                <Setter Property="Margin" Value="0, 0, 0, 2" />
+            </Style>
+            
+            <Style x:Key="ArtItemImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Border
+        HorizontalOptions="Fill"
+        Style="{StaticResource ArtItemContainerStyle}">
+        <Image 
+            Source="{Binding}"
+            Style="{StaticResource ArtItemImageStyle}"/>
+    </Border>
+</ContentView>
